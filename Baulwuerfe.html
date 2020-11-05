@@ -1,12 +1,80 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Baulwürfe</title>
-        <script src="Baulwuerfe.js"></script>
-        <link href="karte0.txt" id="karte0" type="file">
-    </head>
-    <body style="background-color: rgb(170, 102, 0); text-align: center;">
-        <p1 style="font-size: 60px;">Baulwürfe</p1>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <title>Baulwürfe</title>
+    <link href="karte0.txt" id="karte0" type="file">
+</head>
+
+<body style="background-color: rgb(170, 102, 0); text-align: center;">
+    <p1 style="font-size: 60px;">Baulwürfe</p1>
+    <div id="container"></div>
+    <div id="button" onclick="sortieren()">Sortieren & Auszählen</div>
+    <script>
+        var input = document.createElement('input');
+                    input.type = 'file';
+        var inhalt = "";
+        var karte = [];
+
+        input.onchange = e => {
+
+            // getting a hold of the file reference
+            var file = e.target.files[0];
+
+            // setting up the reader
+            var reader = new FileReader();
+            reader.readAsText(file, 'UTF-8');
+
+            // here we tell the reader what to do when it's done reading...
+            reader.onload = readerEvent => {
+                inhalt = readerEvent.target.result; // this is the content!
+                console.log(inhalt);
+                sortieren();
+                return inhalt;
+            }
+        }
+        document.getElementById('container').appendChild(input);
+
+        function sortieren() {
+            var zeilen = inhalt.split("\n");
+            var angabe = zeilen.splice(0, 2);
+            zeilen.splice(6, 1);
+            karte = [];
+            for (var i = 0; i < zeilen.length;  i++) {
+                var x = i;
+                var stellen = zeilen[x].split("");
+                if (i == 0 ) { karte.splice(0, 0, []); }
+                karte.splice(-1, 0, stellen);
+                if (i == zeilen.length - 1) { karte.splice(zeilen.length, 1) }
+            }
+            console.log(zeilen, karte);
+            auszaehlen();
+            return karte;
+        }
+
+        function auszaehlen() {
+            for (i = 0; i < karte.length; i++) {
+                for (e = 0; e < karte[i].length; e++) {
+                    let x = "x",
+                        o = "o";
+                    if (karte[i][e] == x) {
+                        let x1 = karte[i][e],
+                            x2 = karte[i][e + 1],
+                            x3 = karte[i][e + 2],
+                            x4 = karte[i + 1][e],
+                            x5 = karte[i + 1][e + 2],
+                            x6 = karte[i + 2][e],
+                            x7 = karte[i + 2][e + 2],
+                            x8 = karte[i + 3][e],
+                            x9 = karte[i + 3][e + 1],
+                            x10 = karte[i + 4][e + 2];
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+
 </html>
