@@ -58,32 +58,31 @@
             for (var i = 0; i < karte.length; i++) {
                 let g = i;  
                 for (var e = 0; e < karte[g].length; e++) {
-                    let x = "x",
+                    var x = "x",
                         o = "o",
                         h = e;
-                    if (karte[g][h] == x) {
-                        var nextH = h + 1,
-                            nextH2 = h + 2,
-                            nextG = g + 1,
-                            nextG2 = g + 2,
-                            nextG3 = g + 3,
+                    if (karte[g][h] == "x") {
+                        var h2 = h + 1,
+                            h3 = h + 2,
+                            g2 = g + 1,
+                            g3 = g + 2,
+                            g4 = g + 3,
                             x1 = karte[g][h],
-                            x2 = karte[g][nextH],
-                            x3 = karte[g][nextH2],
-                            x4 = karte[nextG][h],
-                            x5 = karte[nextG][nextH2],
-                            x6 = karte[nextG2][h],
-                            x7 = karte[nextG2][nextH2],
-                            x8 = karte[nextG3][h],
-                            x9 = karte[nextG3][nextH],
-                            x10 = karte[nextG3][nextH2];
-                        if (x1 == x || x2 == x && x3 == x && x4 == x && x5 == x && x6 == x && x7 == x && x8 == x && x9 == x && x10 == x) {
+                            x2 = karte[g][h2],
+                            x3 = karte[g][h3],
+                            x4 = karte[g2][h],
+                            x5 = karte[g2][h3],
+                            x6 = karte[g3][h],
+                            x7 = karte[g3][h3],
+                            x8 = karte[g4][h],
+                            x9 = karte[g4][h2],
+                            x10 = karte[g4][h3];
+                        if (x1 == x && x2 == x && x3 == x && x4 == x && x5 == x && x6 == x && x7 == x && x8 == x && x9 == x && x10 == x) {
                             baulwurfCount++;
                             console.log(baulwurfCount, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, karte[4][2]);
                         } else {
                             karte[0].splice(0, 1, "o");
-                            baulwurfCount = 50;
-                            console.log(baulwurfCount);
+                            console.log(baulwurfCount, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, karte[4][2]);
                         }
                     }
                 }
