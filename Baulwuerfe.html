@@ -55,13 +55,13 @@
 
         function auszaehlen() {
             var baulwurfCount = 0;
-            for (var i = 0; i < karte.length; i++) {
+            for (var i = 0; i < karte.length - 2; i++) {
                 let g = i;  
-                for (var e = 0; e < karte[g].length; e++) {
-                    var x = "x",
+                for (var e = 0; e < karte[g].length - 1; e++) {
+                    var x = "X",
                         o = "o",
                         h = e;
-                    if (karte[g][h] == "x") {
+                    if (karte[g][h] == "X") {
                         var h2 = h + 1,
                             h3 = h + 2,
                             g2 = g + 1,
@@ -79,10 +79,19 @@
                             x10 = karte[g4][h3];
                         if (x1 == x && x2 == x && x3 == x && x4 == x && x5 == x && x6 == x && x7 == x && x8 == x && x9 == x && x10 == x) {
                             baulwurfCount++;
-                            console.log(baulwurfCount, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, karte[4][2]);
+                            console.log(baulwurfCount, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10);
+							karte[g][h] = o;
+                            karte[g][h2] = o;
+                            karte[g][h3] = o;
+                            karte[g2][h] = o;
+                            karte[g2][h3] = o;
+                            karte[g3][h] = o;
+                            karte[g3][h3] = o;
+                            karte[g4][h] = o;
+                            karte[g4][h2] = o;
+                            karte[g4][h3];
                         } else {
-                            karte[0].splice(0, 1, "o");
-                            console.log(baulwurfCount, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, karte[4][2]);
+                            console.log(baulwurfCount, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10);
                         }
                     }
                 }
